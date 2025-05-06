@@ -1,3 +1,5 @@
+Metawrap pipeline
+
 1. quality_control
 
 /lustre/home/mwcai/metaWRAP/bin/metawrap read_qc -1 GKD-007.R1.fq -2 GKD-007.R2.fq  -t 32 -x hg38 -o 1.read_qc/GKD-007
