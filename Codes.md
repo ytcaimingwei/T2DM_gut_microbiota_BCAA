@@ -1,4 +1,4 @@
-Metawrap pipeline
+#Meta-omics pipeline
 
 1. quality_control
 
@@ -18,4 +18,8 @@ metawrap reassemble_bins -o ./ASSEMBLY7/bin_reassembly_2  -t 128 -m 2000 -c 50 -
 
 6. quant_bins
 metawrap quant_bins -b ./ASSEMBLY7/bin_reassembly/HQ  -o ASSEMBLY7/quant_bins5 -a ASSEMBLY7/final_assembly.fasta  ./1.read_qc/GKD-007/*.fastq
+
+7.  species-level_dereplication
+dRep dereplicate output_dRep_HQ3_95_v2_97_03 -p 256 -g  ./mags_fa_HQ3/*.fa -sa 0.97 -nc 0.3 -comp 10 -con 50 --checkM_method taxonomy_wf  --debug
+
 
