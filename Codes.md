@@ -26,6 +26,9 @@ Step 8. checkm
 checkm lineage_wf -x fa /lustre/home/mwcai/data/CAS_hospital/mags_fa_HQ3 mags_fa_HQ3_checkm_result -f mags_fa_HQ3_checkm_result.txt  -t 320
 
 Step 9.iq-tree
+iqtree -m Q.pfam+F+I+R10 -s concatenated.v2.fasta -nt AUTO --redo -B 1000
+
+
 
 
 
