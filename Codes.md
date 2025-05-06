@@ -28,7 +28,26 @@ checkm lineage_wf -x fa /lustre/home/mwcai/data/CAS_hospital/mags_fa_HQ3 mags_fa
 Step 9.iq-tree
 iqtree -m Q.pfam+F+I+R10 -s concatenated.v2.fasta -nt AUTO --redo -B 1000
 
+Step10. fa to faa
+for entry in './'*.fasta
+do
+prodigal -f gff -i $entry -o $entry.gff -p meta -a $entry.faa
+done
 
+Step11. genome annotation
+diamond blastp -d /lustre/home/mwcai/data/database_for_protein_annotation/dbCAN_for_CAZYme/db/CAZy.dmnd -q  total_up.faa  -o diamond_dbCAN_result --more-sensitive -p 32 --max-target-seqs 5 -e 1E-10 -f 6
+
+diamond blastp -d /lustre/home/mwcai/data/database_for_protein_annotation/hydrogenase_database/hyddb-results_conct_.dmnd -q  total_up.faa  -o diamond_hyddb_result --more-sensitive -p 32 --max-target-seqs 5 -e 1E-10 -f 6
+
+diamond blastp -d /lustre/home/mwcai/data/database_for_protein_annotation/peptidase_MEROPS/pepunit.lib.faa.peptidase.reformat.list.v2.faa.dmnd -q  total_up.faa  -o diamond_peptidase_result --more-sensitive -p 32 --max-target-seqs 5 -e 1E-10 -f 6
+
+diamond blastp -d /lustre/home/mwcai/data/database_for_protein_annotation/TCDB_DB_for_transporter/tcdb.dmnd -q  total_up.faa  -o diamond_tcdb_result --more-sensitive -p 32 --max-target-seqs 5 -e 1E-10 -f 6
+
+emapper.py -i total_up.faa  --output up_emapper -m diamond --cpu 32 --override
+
+interproscan.sh -i total_up.faa -b total_up.faa.interproscan -iprlookup -f tsv
+
+Step 10. gene and transcript quantification
 
 
 
