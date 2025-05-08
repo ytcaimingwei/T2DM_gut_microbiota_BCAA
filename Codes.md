@@ -55,10 +55,8 @@ done
 
 sortmerna --ref /lustre/home/mwcai/tools/sortmerna/db/smr_v4.3_default_db.fasta --reads GKD-007.R1_val_1.fq.t.fq.clean.fq --aligned GKD007.R1_val_1.fq.t.fq.clean.fq.rna.fq    --other GKD-007.R1_val_1.fq.t.fq.clean.fq.mrna.fq    -a 32 -e 1e-10 --fastx
 
-Step 13. gene and transcript quantification
 
-
-Step14. prevalence of spcecies across cohorts
+Step13. prevalence of spcecies across cohorts
 for entry in "./"*fq
 do
 coverm contig --single $entry -r ../ref_seq_BCAA_bu_pv.fa --min-read-percent-identity 95 --min-read-aligned-percent 50  -o $entry.coverm
